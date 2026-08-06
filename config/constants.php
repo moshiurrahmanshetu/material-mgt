@@ -1,8 +1,4 @@
 <?php
-// Enable error reporting for debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 // Site Configuration
 define('SITE_NAME', 'Material Management System');
 define('BASE_URL', 'http://localhost/material-mgt');
