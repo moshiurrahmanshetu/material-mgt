@@ -1,0 +1,20 @@
+# Deny direct access to config and database folders
+<FilesMatch "^(config|database)/">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Deny access to .htaccess file
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Prevent directory listing
+Options -Indexes
+
+# Enable pretty URLs (optional - uncomment if needed)
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ index.php [QSA,L]
