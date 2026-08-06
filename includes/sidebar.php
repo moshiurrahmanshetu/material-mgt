@@ -88,6 +88,16 @@ $current_page = basename($_SERVER['PHP_SELF']);
     </li>
     <?php endif; ?>
     
+    <?php if (hasPermission('return.view')): ?>
+    <li class="nav-item">
+        <a class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/modules/return/') !== false ? 'active' : ''; ?>" 
+           href="<?php echo BASE_URL; ?>/modules/return/index.php">
+            <i class="bi bi-arrow-return-left me-2"></i>
+            <span class="nav-text">Return</span>
+        </a>
+    </li>
+    <?php endif; ?>
+    
     <?php if (hasPermission('stock.view')): ?>
     <li class="nav-item">
         <a class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/modules/stock/') !== false ? 'active' : ''; ?>" 
