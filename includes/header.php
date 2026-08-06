@@ -4,6 +4,8 @@ if (!defined('APP_ACCESS')) {
     die('Direct access not permitted');
 }
 
+require_once __DIR__ . '/functions.php';
+
 $page_title = isset($page_title) ? $page_title . ' - ' . SITE_NAME : SITE_NAME;
 ?>
 <!DOCTYPE html>

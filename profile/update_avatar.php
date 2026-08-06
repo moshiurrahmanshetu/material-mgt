@@ -1,5 +1,4 @@
 <?php
-define('APP_ACCESS', true);
 require_once __DIR__ . '/../includes/auth_check.php';
 
 $page_title = 'Change Avatar';

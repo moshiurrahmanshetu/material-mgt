@@ -1,9 +1,4 @@
 <?php
-// Prevent direct access
-if (!defined('APP_ACCESS')) {
-    die('Direct access not permitted');
-}
-
 // Sanitize input to prevent XSS
 function sanitize($data) {
     return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');

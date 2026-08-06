@@ -1,9 +1,4 @@
 <?php
-// Prevent direct access
-if (!defined('APP_ACCESS')) {
-    die('Direct access not permitted');
-}
-
 require_once __DIR__ . '/constants.php';
 
 try {

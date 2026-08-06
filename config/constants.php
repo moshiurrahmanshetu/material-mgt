@@ -1,8 +1,7 @@
 <?php
-// Prevent direct access
-if (!defined('APP_ACCESS')) {
-    die('Direct access not permitted');
-}
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // Site Configuration
 define('SITE_NAME', 'Material Management System');

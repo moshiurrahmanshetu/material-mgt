@@ -1,7 +1,10 @@
 <?php
-define('APP_ACCESS', true);
+if (!defined('APP_ACCESS')) {
+    define('APP_ACCESS', true);
+}
 
 require_once __DIR__ . '/../config/constants.php';
+require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/../config/db.php';
 
 // Start session if not already started
