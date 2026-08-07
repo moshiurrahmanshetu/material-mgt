@@ -133,6 +133,7 @@ body {
     color: white;
     position: relative;
     overflow: hidden;
+    background: #5e5e5e;
 }
 
 .stat-card::before {

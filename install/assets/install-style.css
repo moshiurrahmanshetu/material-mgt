@@ -1,0 +1,419 @@
+/* Installer Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.installer-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.installer-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.installer-header h1 {
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.installer-header p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 16px;
+}
+
+.step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.step.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: scale(1.1);
+}
+
+.step.completed {
+    background: #28a745;
+    color: white;
+}
+
+.step-connector {
+    flex: 1;
+    height: 3px;
+    background: #e9ecef;
+    margin: 0 10px;
+    max-width: 60px;
+}
+
+.step-connector.completed {
+    background: #28a745;
+}
+
+.installer-content {
+    padding: 40px;
+}
+
+.installer-content h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.installer-content h3 {
+    color: #555;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.installer-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+    font-size: 12px;
+}
+
+.form-actions {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.requirements-list {
+    margin: 20px 0;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+}
+
+.requirement-item.pass {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.requirement-item.fail {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.requirement-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.requirement-item.pass .requirement-icon {
+    background: #28a745;
+    color: white;
+}
+
+.requirement-item.fail .requirement-icon {
+    background: #dc3545;
+    color: white;
+}
+
+.requirement-details {
+    flex: 1;
+}
+
+.requirement-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.requirement-status {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.testing {
+    color: #ffc107;
+}
+
+.success {
+    color: #28a745;
+}
+
+.error {
+    color: #dc3545;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+#importStatus {
+    font-size: 14px;
+    color: #666;
+}
+
+.success-message,
+.error-message {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.success-icon,
+.error-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.success-icon {
+    background: #28a745;
+    color: white;
+}
+
+.error-icon {
+    background: #dc3545;
+    color: white;
+}
+
+.success-message h2,
+.error-message h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.installation-summary {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.installation-summary h3 {
+    margin-top: 0;
+}
+
+.installation-summary ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.installation-summary li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.installation-summary li:last-child {
+    border-bottom: none;
+}
+
+.security-notice {
+    background: #fff3cd;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.security-notice h3 {
+    margin-top: 0;
+    color: #856404;
+}
+
+.security-notice p {
+    margin: 0;
+    color: #856404;
+}
+
+.security-notice code {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .installer-content {
+        padding: 20px;
+    }
+    
+    .step-indicator {
+        flex-wrap: wrap;
+    }
+    
+    .step-connector {
+        display: none;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+    }
+}

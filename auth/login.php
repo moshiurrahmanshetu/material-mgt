@@ -1,7 +1,19 @@
 <?php
 require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../config/constants.php';
-require_once __DIR__ . '/../config/db.php';
+
+// Graceful fallback if config file is missing
+$config_file = __DIR__ . '/../config/db.php';
+if (!file_exists($config_file)) {
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'];
+    $path = dirname($_SERVER['PHP_SELF']);
+    $path = rtrim($path, '/\\');
+    header('Location: ' . $protocol . '://' . $host . $path . '/install/index.php');
+    exit;
+}
+
+require_once $config_file;
 
 // Start session
 if (session_status() === PHP_SESSION_NONE) {

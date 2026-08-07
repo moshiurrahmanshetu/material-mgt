@@ -5,7 +5,21 @@ if (!defined('APP_ACCESS')) {
 
 require_once __DIR__ . '/../config/constants.php';
 require_once __DIR__ . '/functions.php';
-require_once __DIR__ . '/../config/db.php';
+
+// Graceful fallback if config file is missing
+$config_file = __DIR__ . '/../config/db.php';
+if (!file_exists($config_file)) {
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'];
+    $path = dirname($_SERVER['PHP_SELF']);
+    // Go up two levels since we're in includes/ subfolder
+    $path = dirname(dirname($path));
+    $path = rtrim($path, '/\\');
+    header('Location: ' . $protocol . '://' . $host . $path . '/install/index.php');
+    exit;
+}
+
+require_once $config_file;
 require_once __DIR__ . '/permission_check.php';
 
 // Start session if not already started

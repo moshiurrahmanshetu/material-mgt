@@ -1,4 +1,14 @@
 <?php
+// Check if application is installed
+$config_file = __DIR__ . '/config/db.php';
+$lock_file = __DIR__ . '/install/installed.lock';
+
+if (!file_exists($config_file) || !file_exists($lock_file)) {
+    // Application not installed - redirect to installer
+    header('Location: ' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/install/index.php');
+    exit;
+}
+
 define('APP_ACCESS', true);
 require_once __DIR__ . '/config/constants.php';
 
