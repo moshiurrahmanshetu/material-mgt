@@ -28,3 +28,6 @@ define('DATE_FORMAT', 'Y-m-d');
 define('DATETIME_FORMAT', 'Y-m-d H:i:s');
 define('TIMEZONE', 'UTC');
 date_default_timezone_set(TIMEZONE);
+
+// Settings Configuration
+define('SYSTEM_NAME', 'Material Management System');

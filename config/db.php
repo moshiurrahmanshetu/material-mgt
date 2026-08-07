@@ -13,3 +13,6 @@ try {
 } catch (PDOException $e) {
     die('Database connection failed: ' . $e->getMessage());
 }
+
+// Load application settings (timezone, system name, etc.)
+require_once __DIR__ . '/../includes/app_bootstrap.php';

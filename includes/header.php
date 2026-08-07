@@ -6,7 +6,7 @@ if (!defined('APP_ACCESS')) {
 
 require_once __DIR__ . '/functions.php';
 
-$page_title = isset($page_title) ? $page_title . ' - ' . SITE_NAME : SITE_NAME;
+$page_title = isset($page_title) ? $page_title . ' - ' . (defined('SYSTEM_NAME') ? SYSTEM_NAME : SITE_NAME) : (defined('SYSTEM_NAME') ? SYSTEM_NAME : SITE_NAME);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,12 @@ $page_title = isset($page_title) ? $page_title . ' - ' . SITE_NAME : SITE_NAME;
                 <i class="bi bi-list"></i>
             </button>
             <a class="navbar-brand" href="<?php echo BASE_URL; ?>/dashboard/index.php">
-                <i class="bi bi-box-seam me-2"></i><?php echo SITE_NAME; ?>
+                <?php if (isset($app_settings) && !empty($app_settings['company_logo'])): ?>
+                <img src="<?php echo BASE_URL; ?>/uploads/<?php echo htmlspecialchars($app_settings['company_logo']); ?>" alt="Logo" class="me-2" style="height: 30px;">
+                <?php else: ?>
+                <i class="bi bi-box-seam me-2"></i>
+                <?php endif; ?>
+                <?php echo defined('SYSTEM_NAME') ? SYSTEM_NAME : SITE_NAME; ?>
             </a>
             
             <div class="ms-auto">

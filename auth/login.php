@@ -20,12 +20,12 @@ $csrf_token = generateCsrfToken();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - <?php echo SITE_NAME; ?></title>
+    <title>Login - <?php echo defined('SYSTEM_NAME') ? SYSTEM_NAME : SITE_NAME; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ecebeb;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -37,7 +37,7 @@ $csrf_token = generateCsrfToken();
             border: none;
         }
         .login-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #302e2e;
             border-radius: 15px 15px 0 0;
             padding: 30px;
             text-align: center;
@@ -55,13 +55,13 @@ $csrf_token = generateCsrfToken();
             box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
         }
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0d6efd;
             border: none;
             padding: 12px;
             font-weight: 600;
         }
         .btn-primary:hover {
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            background: #0b5ed7;
         }
     </style>
 </head>
@@ -71,8 +71,12 @@ $csrf_token = generateCsrfToken();
             <div class="col-md-5 col-lg-4">
                 <div class="card login-card">
                     <div class="login-header">
+                        <?php if (isset($app_settings) && !empty($app_settings['company_logo'])): ?>
+                        <img src="<?php echo BASE_URL; ?>/uploads/<?php echo htmlspecialchars($app_settings['company_logo']); ?>" alt="Logo" class="mb-2" style="height: 50px;">
+                        <?php else: ?>
                         <i class="bi bi-box-seam"></i>
-                        <h1 class="mt-2"><?php echo SITE_NAME; ?></h1>
+                        <?php endif; ?>
+                        <h1 class="mt-2"><?php echo defined('SYSTEM_NAME') ? SYSTEM_NAME : SITE_NAME; ?></h1>
                     </div>
                     <div class="card-body p-4">
                         <?php
@@ -113,9 +117,6 @@ $csrf_token = generateCsrfToken();
                                 <i class="bi bi-box-arrow-in-right me-2"></i>Login
                             </button>
                         </form>
-                    </div>
-                    <div class="card-footer text-center py-3 bg-light">
-                        <small class="text-muted">Default: admin / Admin@123</small>
                     </div>
                 </div>
             </div>

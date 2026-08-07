@@ -13,6 +13,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <div class="sidebar-user-info flex-grow-1">
         <div class="fw-bold text-white"><?php echo htmlspecialchars($_SESSION['full_name']); ?></div>
         <small class="text-white-50"><?php echo htmlspecialchars($_SESSION['role_name']); ?></small>
+        <?php if (defined('SYSTEM_NAME')): ?>
+        <small class="text-white-50 d-block"><?php echo htmlspecialchars(SYSTEM_NAME); ?></small>
+        <?php endif; ?>
     </div>
     <button class="btn btn-sm btn-outline-light d-none d-lg-block" type="button" id="sidebarCollapse">
         <i class="bi bi-chevron-left"></i>
